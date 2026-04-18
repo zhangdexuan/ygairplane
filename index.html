@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>牙哥飞行科技 - 领航低空经济万亿新赛道</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f1219;
+            --secondary: #1a1f36;
+            --accent: #4facfe;
+            --accent-light: #00f2fe;
+            --gold: #ffd93d;
+            --orange: #ff6b35;
+            --text-light: #e4e7eb;
+            --text-muted: #8b95a5;
+            --shadow-soft: 0 10px 40px rgba(79, 172, 254, 0.1);
+            --shadow-hover: 0 20px 60px rgba(79, 172, 254, 0.2);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--primary);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 18, 25, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(79, 172, 254, 0.1);
+            padding: 15px 0;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+        }
+
+        nav.scrolled {
+            padding: 10px 0;
+            background: rgba(15, 18, 25, 0.98);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 12px;
+            right: 12px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-light);
+            background: rgba(79, 172, 254, 0.1);
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.03)"/></svg>');
+            background-size: 50px 50px;
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            padding: 0 20px;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 10px 24px;
+            background: rgba(79, 172, 254, 0.15);
+            border: 1px solid var(--accent);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--accent-light);
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(79, 172, 254, 0.2);
+            transition: var(--transition);
+        }
+
+        .hero-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(79, 172, 254, 0.3);
+            background: rgba(79, 172, 254, 0.25);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 36px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            box-shadow: 0 6px 30px rgba(79, 172, 254, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(79, 172, 254, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--accent);
+            box-shadow: 0 4px 20px rgba(79, 172, 254, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 30px rgba(79, 172, 254, 0.4);
+        }
+
+        .stats {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 40px 25px;
+            background: rgba(26, 31, 54, 0.6);
+            border-radius: 20px;
+            border: 1px solid rgba(79, 172, 254, 0.1);
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent);
+            background: rgba(26, 31, 54, 0.8);
+        }
+
+        .stat-number {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: var(--accent-light);
+            margin-bottom: 12px;
+            transition: var(--transition);
+        }
+
+        .stat-item:hover .stat-number {
+            transform: scale(1.05);
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .business {
+            padding: 120px 0;
+            background: var(--primary);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(79, 172, 254, 0.12);
+            border-radius: 25px;
+            font-size: 0.85rem;
+            color: var(--accent-light);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 20px rgba(79, 172, 254, 0.1);
+            border: 1px solid rgba(79, 172, 254, 0.2);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .business-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .business-card {
+            background: linear-gradient(145deg, rgba(26, 31, 54, 0.8), rgba(15, 18, 25, 0.9));
+            border-radius: 20px;
+            padding: 50px 35px;
+            border: 1px solid rgba(79, 172, 254, 0.1);
+            transition: var(--transition);
+            position: relative;
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: blur(10px);
+        }
+
+        .business-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .business-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .business-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .business-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.3);
+            transition: var(--transition);
+        }
+
+        .business-card:hover .business-icon {
+            transform: scale(1.1);
+            box-shadow: 0 10px 35px rgba(79, 172, 254, 0.4);
+        }
+
+        .business-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .business-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .ecosystem {
+            padding: 120px 0;
+            background: linear-gradient(180deg, var(--secondary) 0%, var(--primary) 100%);
+        }
+
+        .eco-visual {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            max-width: 1200px;
+            margin: 60px auto 0;
+            padding: 0 20px;
+        }
+
+        .eco-item {
+            background: rgba(26, 31, 54, 0.7);
+            border-radius: 20px;
+            padding: 40px 25px;
+            text-align: center;
+            border: 1px solid rgba(79, 172, 254, 0.1);
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: blur(10px);
+        }
+
+        .eco-item:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-light);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .eco-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.3);
+            transition: var(--transition);
+        }
+
+        .eco-item:hover .eco-icon {
+            transform: scale(1.1);
+        }
+
+        .eco-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .eco-item p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .camps {
+            padding: 120px 0;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        .camps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .camp-card {
+            background: rgba(26, 31, 54, 0.8);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(79, 172, 254, 0.1);
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: blur(10px);
+        }
+
+        .camp-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent);
+        }
+
+        .camp-header {
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            padding: 30px;
+            text-align: center;
+        }
+
+        .camp-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .camp-header span {
+            font-size: 0.9rem;
+            color: var(--accent-light);
+        }
+
+        .camp-body {
+            padding: 30px;
+        }
+
+        .camp-body p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .camp-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .camp-tag {
+            padding: 6px 16px;
+            background: rgba(79, 172, 254, 0.15);
+            border-radius: 25px;
+            font-size: 0.85rem;
+            color: var(--accent-light);
+            transition: var(--transition);
+        }
+
+        .camp-tag:hover {
+            background: rgba(79, 172, 254, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .roadmap {
+            padding: 120px 0;
+            background: linear-gradient(180deg, var(--secondary) 0%, var(--primary) 100%);
+        }
+
+        .roadmap-timeline {
+            max-width: 1000px;
+            margin: 60px auto 0;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .roadmap-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent), var(--accent-light));
+        }
+
+        .roadmap-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: calc(50% + 40px);
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .roadmap-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: calc(50% + 40px);
+        }
+
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 4px solid var(--secondary);
+            box-shadow: 0 0 0 2px var(--accent);
+            transition: var(--transition);
+        }
+
+        .roadmap-item:hover::before {
+            transform: translateX(-50%) scale(1.2);
+            box-shadow: 0 0 0 4px var(--accent);
+        }
+
+        .roadmap-content {
+            background: rgba(26, 31, 54, 0.7);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(79, 172, 254, 0.1);
+            max-width: 400px;
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .roadmap-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent);
+        }
+
+        .roadmap-year {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 20px rgba(79, 172, 254, 0.3);
+        }
+
+        .roadmap-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .roadmap-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .contact {
+            padding: 120px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        .contact-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .contact-item {
+            background: rgba(26, 31, 54, 0.6);
+            border-radius: 20px;
+            padding: 40px 25px;
+            border: 1px solid rgba(79, 172, 254, 0.1);
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.3);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: scale(1.1);
+        }
+
+        .contact-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            background: var(--primary);
+            padding: 80px 0 40px;
+            border-top: 1px solid rgba(79, 172, 254, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .footer-links h4 {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            display: inline-block;
+            padding: 5px 0;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-light);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 60px auto 0;
+            padding: 30px 20px 0;
+            border-top: 1px solid rgba(79, 172, 254, 0.1);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 30px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(15, 18, 25, 0.98);
+                flex-direction: column;
+                padding: 30px;
+                gap: 20px;
+                border-bottom: 1px solid rgba(79, 172, 254, 0.1);
+                box-shadow: var(--shadow-hover);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero-content {
+                padding: 0 30px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+
+            .business-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .eco-visual {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+
+            .camps-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+
+            .roadmap-timeline::before {
+                left: 20px;
+            }
+
+            .roadmap-item,
+            .roadmap-item:nth-child(even) {
+                padding-left: 60px;
+                padding-right: 0;
+                justify-content: flex-start;
+            }
+
+            .roadmap-item::before {
+                left: 20px;
+            }
+
+            .roadmap-content {
+                max-width: 100%;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --shadow-soft: 0 5px 15px rgba(0, 0, 0, 0.1);
+                --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.2);
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            .hero-content {
+                padding: 0 20px;
+            }
+
+            .hero-badge {
+                padding: 8px 20px;
+                font-size: 0.85rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                padding: 14px 30px;
+                font-size: 0.95rem;
+                width: 100%;
+                max-width: 250px;
+                text-align: center;
+            }
+
+            .stats {
+                padding: 80px 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .stat-item {
+                padding: 30px 20px;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .business,
+            .ecosystem,
+            .camps,
+            .roadmap,
+            .contact {
+                padding: 100px 0;
+            }
+
+            .section-header {
+                margin-bottom: 60px;
+            }
+
+            .section-tag {
+                padding: 6px 16px;
+                font-size: 0.8rem;
+            }
+
+            .business-card {
+                padding: 40px 25px;
+            }
+
+            .eco-visual {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .eco-item {
+                padding: 35px 20px;
+            }
+
+            .camps-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .camp-header {
+                padding: 25px;
+            }
+
+            .camp-body {
+                padding: 25px;
+            }
+
+            .roadmap-timeline {
+                margin: 50px auto 0;
+            }
+
+            .roadmap-item {
+                margin-bottom: 50px;
+            }
+
+            .roadmap-content {
+                padding: 25px;
+            }
+
+            .contact-wrapper {
+                padding: 0 20px;
+            }
+
+            .contact-info {
+                gap: 25px;
+            }
+
+            .contact-item {
+                padding: 35px 20px;
+            }
+
+            footer {
+                padding: 60px 0 30px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .footer-links h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .footer-bottom {
+                margin: 40px auto 0;
+                padding: 20px 20px 0;
+            }
+
+            .cursor {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo img {
+                height: 35px;
+            }
+
+            .logo-text {
+                font-size: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            .business-card {
+                padding: 35px 20px;
+            }
+
+            .business-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+
+            .business-card h3 {
+                font-size: 1.4rem;
+            }
+
+            .eco-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .eco-item h4 {
+                font-size: 1.2rem;
+            }
+
+            .contact-item {
+                padding: 30px 15px;
+            }
+
+            .contact-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="牙哥飞行科技LOGO.png" alt="牙哥飞行科技">
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">首页</a></li>
+                <li><a href="#business">业务板块</a></li>
+                <li><a href="#ecosystem">生态优势</a></li>
+                <li><a href="#camps">营地网络</a></li>
+                <li><a href="#roadmap">发展规划</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">低空经济引领者</div>
+            <h1>
+                牙哥飞行科技<br>
+                <span class="highlight">领航低空经济万亿新赛道</span>
+            </h1>
+            <p class="hero-subtitle">
+                中国领先的飞行器制造商与营地运营商，四位一体生态闭环，
+                构建可持续发展的低空物流生态体系
+            </p>
+            <div class="hero-cta">
+                <a href="#business" class="btn btn-primary">了解更多</a>
+                <a href="#contact" class="btn btn-secondary">联系我们</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item fade-in">
+                <div class="stat-number">6+</div>
+                <div class="stat-label">标准化飞行营地</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">200万+</div>
+                <div class="stat-label">精准粉丝群体</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">3大</div>
+                <div class="stat-label">核心业务板块</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">三年复合增长率</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="business" id="business">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-tag">核心业务</div>
+                <h2 class="section-title">三大业务板块协同发展</h2>
+                <p class="section-subtitle">飞机制造、驾照培训、营地网络四位一体，打造完整低空经济生态闭环</p>
+            </div>
+            <div class="business-grid">
+                <div class="business-card fade-in">
+                    <div class="business-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 2L2 22"></path>
+                            <path d="M17 2h5v5"></path>
+                            <path d="M2 17h5v5"></path>
+                        </svg>
+                    </div>
+                    <h3>飞机制造</h3>
+                    <p>专注飞行器研发与制造，拥有核心技术团队，已完成多款飞行器产品迭代。采用国际领先技术标准，为低空物流提供高效、可靠的飞行器解决方案。</p>
+                </div>
+                <div class="business-card fade-in">
+                    <div class="business-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                        </svg>
+                    </div>
+                    <h3>飞行驾照培训</h3>
+                    <p>专业飞行驾照培训机构，提供从入门到进阶的全方位培训服务。配备资深教官团队，完善的培训体系，助力更多人实现飞行梦想。</p>
+                </div>
+                <div class="business-card fade-in">
+                    <div class="business-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h3>营地网络加盟</h3>
+                    <p>全国飞行营地网络布局，提供标准化营地建设与运营支持。已建立6大核心营地枢纽，计划未来扩展至20个核心城市，打造全国领先的飞行营地网络。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ecosystem" id="ecosystem">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-tag">竞争优势</div>
+                <h2 class="section-title">四位一体生态闭环</h2>
+                <p class="section-subtitle">打通制造、营地、平台、流量四大板块，构建竞争对手难以复制的闭环生态系统</p>
+            </div>
+            <div class="eco-visual">
+                <div class="eco-item fade-in">
+                    <div class="eco-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 9V5c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-4"></path>
+                            <path d="M22 9V5c0-1.1-.9-2-2-2h-4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4"></path>
+                            <path d="M6 12h12"></path>
+                        </svg>
+                    </div>
+                    <h4>产品供给</h4>
+                    <p>自主研发飞行器</p>
+                </div>
+                <div class="eco-item fade-in">
+                    <div class="eco-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                    </div>
+                    <h4>场景覆盖</h4>
+                    <p>多元应用场景</p>
+                </div>
+                <div class="eco-item fade-in">
+                    <div class="eco-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                        </svg>
+                    </div>
+                    <h4>数字化力</h4>
+                    <p>智能运营平台</p>
+                </div>
+                <div class="eco-item fade-in">
+                    <div class="eco-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h4>流量协同</h4>
+                    <p>精准用户群体</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="camps" id="camps">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-tag">营地网络</div>
+                <h2 class="section-title">六大核心营地布局</h2>
+                <p class="section-subtitle">率先掌握核心稀缺空域资源，在区域市场形成深厚的竞争护城河</p>
+            </div>
+            <div class="camps-grid">
+                <div class="camp-card fade-in">
+                    <div class="camp-header">
+                        <h3>华东枢纽</h3>
+                        <span>长三角经济区</span>
+                    </div>
+                    <div class="camp-body">
+                        <p>覆盖上海、江苏、浙江核心区域，配备先进起降设施与培训场地。</p>
+                        <div class="camp-tags">
+                            <span class="camp-tag">飞行员培训</span>
+                            <span class="camp-tag">飞行体验</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="camp-card fade-in">
+                    <div class="camp-header">
+                        <h3>华南枢纽</h3>
+                        <span>粤港澳大湾区</span>
+                    </div>
+                    <div class="camp-body">
+                        <p>服务珠三角经济圈，便利交通网络，承接跨境物流需求。</p>
+                        <div class="camp-tags">
+                            <span class="camp-tag">物流配送</span>
+                            <span class="camp-tag">应急救援</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="camp-card fade-in">
+                    <div class="camp-header">
+                        <h3>华北枢纽</h3>
+                        <span>京津冀协同区</span>
+                    </div>
+                    <div class="camp-body">
+                        <p>辐射北京、天津、河北核心城市，承接高端商务飞行需求。</p>
+                        <div class="camp-tags">
+                            <span class="camp-tag">商务飞行</span>
+                            <span class="camp-tag">飞行培训</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="camp-card fade-in">
+                    <div class="camp-header">
+                        <h3>西南枢纽</h3>
+                        <span>成渝双城经济圈</span>
+                    </div>
+                    <div class="camp-body">
+                        <p>覆盖西南地区复杂地形，独特的地理优势用于特殊飞行任务。</p>
+                        <div class="camp-tags">
+                            <span class="camp-tag">旅游飞行</span>
+                            <span class="camp-tag">航拍测绘</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="camp-card fade-in">
+                    <div class="camp-header">
+                        <h3>华中枢纽</h3>
+                        <span>长江中游城市群</span>
+                    </div>
+                    <div class="camp-body">
+                        <p>服务华中地区核心城市网络，承担中部地区物流枢纽功能。</p>
+                        <div class="camp-tags">
+                            <span class="camp-tag">物流转运</span>
+                            <span class="camp-tag">飞行营地</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="camp-card fade-in">
+                    <div class="camp-header">
+                        <h3>西北枢纽</h3>
+                        <span>丝绸之路经济带</span>
+                    </div>
+                    <div class="camp-body">
+                        <p>覆盖广阔西部地区，承担偏远地区物资配送与应急保障。</p>
+                        <div class="camp-tags">
+                            <span class="camp-tag">物资配送</span>
+                            <span class="camp-tag">应急保障</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="roadmap" id="roadmap">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-tag">发展规划</div>
+                <h2 class="section-title">三阶段战略发展路径</h2>
+                <p class="section-subtitle">稳健运营 · 规模突破，实现从"启动验证"到"规模盈利"的跨越</p>
+            </div>
+            <div class="roadmap-timeline">
+                <div class="roadmap-item fade-in">
+                    <div class="roadmap-content">
+                        <span class="roadmap-year">2025-2026</span>
+                        <h3>启动验证期</h3>
+                        <p>完成核心产品研发，建立6大标准化营地，启动营地网络扩张验证，以轻型飞行器为主，营收目标2亿元。</p>
+                    </div>
+                </div>
+                <div class="roadmap-item fade-in">
+                    <div class="roadmap-content">
+                        <span class="roadmap-year">2027-2028</span>
+                        <h3>规模扩张期</h3>
+                        <p>完成产业链整合，飞行器型号矩阵完善，飞行营地网络扩展至20个核心枢纽城市，营收目标8亿元。</p>
+                    </div>
+                </div>
+                <div class="roadmap-item fade-in">
+                    <div class="roadmap-content">
+                        <span class="roadmap-year">2029+</span>
+                        <h3>行业引领期</h3>
+                        <p>深度规模化效应驱动，盈利能力显著提升，开启全球化布局筹备，营收目标20亿元。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-wrapper">
+            <div class="section-header fade-in">
+                <div class="section-tag">联系我们</div>
+                <h2 class="section-title">携手共创低空经济新生态</h2>
+                <p class="section-subtitle">万亿级赛道 · 政策红利密集释放 · 商业闭环已验证</p>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item fade-in">
+                    <div class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </div>
+                    <h4>公司地址</h4>
+                    <p>中国低空经济产业园区</p>
+                </div>
+                <div class="contact-item fade-in">
+                    <div class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <h4>电子邮箱</h4>
+                    <p>contact@yagefly.com</p>
+                </div>
+                <div class="contact-item fade-in">
+                    <div class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <h4>联系电话</h4>
+                    <p>400-888-8888</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>牙哥飞行科技</h3>
+                <p>中国领先的飞行器制造商与营地运营商，致力于构建可持续发展的低空物流生态闭环，引领低空经济万亿新赛道。</p>
+            </div>
+            <div class="footer-links">
+                <h4>快速链接</h4>
+                <ul>
+                    <li><a href="#business">业务板块</a></li>
+                    <li><a href="#ecosystem">生态优势</a></li>
+                    <li><a href="#camps">营地网络</a></li>
+                    <li><a href="#roadmap">发展规划</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>业务合作</h4>
+                <ul>
+                    <li><a href="#">飞机制造</a></li>
+                    <li><a href="#">驾照培训</a></li>
+                    <li><a href="#">营地加盟</a></li>
+                    <li><a href="#">投资合作</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>关注我们</h4>
+                <ul>
+                    <li><a href="#">微信公众号</a></li>
+                    <li><a href="#">微博官方</a></li>
+                    <li><a href="#">抖音号</a></li>
+                    <li><a href="#">视频号</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 牙哥飞行科技有限公司 版权所有 | 领航低空经济万亿新赛道</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            const navbar = document.getElementById('navbar');
+
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                    
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                });
+            });
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            fadeElements.forEach(el => observer.observe(el));
+
+            // 添加鼠标跟随效果
+            const cursor = document.createElement('div');
+            cursor.classList.add('cursor');
+            document.body.appendChild(cursor);
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+
+            // 为按钮添加点击效果
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    ripple.classList.add('ripple');
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+    </script>
+    <style>
+        /* 额外的动画样式 */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: rgba(79, 172, 254, 0.2);
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(79, 172, 254, 0.3);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        .nav-links.active {
+            display: flex;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--accent), var(--accent-light));
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-light);
+        }
+    </style>
+</body>
+</html>
